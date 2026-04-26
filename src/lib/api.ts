@@ -24,10 +24,11 @@ export type FillResponse = {
   notes: string[];
 };
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000';
+const API_BASE = (import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000').replace(/\/+$/, '');
 
 function toAbsoluteUrl(path: string): string {
-  return `${API_BASE}${path}`;
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  return `${API_BASE}${normalizedPath}`;
 }
 
 function formatNetworkError(url: string, cause: unknown): string {
