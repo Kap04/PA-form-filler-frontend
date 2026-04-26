@@ -1,4 +1,4 @@
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
 import { cn } from '../../lib/cn';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -13,8 +13,8 @@ type ButtonAnchorProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   children?: ReactNode;
 };
 
-export function Button(props: ButtonProps): JSX.Element;
-export function Button(props: ButtonAnchorProps): JSX.Element;
+export function Button(props: ButtonProps): ReactElement;
+export function Button(props: ButtonAnchorProps): ReactElement;
 export function Button({ className, variant = 'primary', asChild, ...props }: ButtonProps | ButtonAnchorProps) {
   const variants: Record<NonNullable<ButtonProps['variant']>, string> = {
     primary: 'bg-coral text-white hover:brightness-105',
